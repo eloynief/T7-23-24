@@ -28,15 +28,15 @@ public class Main {
 		int veces=0;
 
 		
-		Map<Integer,Character> listaPalabras= new TreeMap<Integer,Character>();
+		List<Character> listaPalabras= new ArrayList<Character>();
 		
 		//pasas la palabra a un array char
-        letras=texto.toCharArray();
+        letras=texto.toLowerCase().toCharArray();
         
         for(int i=0;i<letras.length;i++) {
         	
         	//le pones el valor de la letra
-        	listaPalabras.put(i, letras[i]);
+        	listaPalabras.add(letras[i]);
         	
         }
         
@@ -47,19 +47,24 @@ public class Main {
         
         letra=sc.next().charAt(0);
         
+        for(char palabra:listaPalabras) {
+        	
+        	if(palabra==letra) {
+        		veces+=1;
+        	}
+        	
+        }
         
         
-        
-        
-		for (int i=0;i<listaPalabras.size();i++) {
-			
-			//
-			if(listaPalabras.containsValue(letra)){
-				veces+=1;
-			}
-			
-			
-		}
+//		for (int i=0;i<listaPalabras.size();i++) {
+//			
+//			//
+//			if(listaPalabras.containsValue(letra)){
+//				veces+=1;
+//			}
+//			
+//			
+//		}
 		System.out.println("La palabra aparece "+veces+" veces");
 		
 	}
