@@ -1,6 +1,7 @@
 package part1.ej3;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
@@ -19,7 +20,7 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		//string para escribir
-		char letra=' ';
+		char escritura=' ';
 		
 		String texto = "En un agujero en el suelo, vivía un hobbit. No un agujero húmedo, sucio, repugnante, con restos de gusanos y olor a fango, ni tampoco un agujero, seco, desnudo y arenoso, sin nada en que sentarse o que comer: era un agujero-hobbit, y eso significa comodidad";
 		
@@ -28,7 +29,7 @@ public class Main {
 		int veces=0;
 
 		
-		List<Character> listaPalabras= new ArrayList<Character>();
+		Map<Character,Integer> listaPalabras= new HashMap<Character,Integer>();
 		
 		//pasas la palabra a un array char
         letras=texto.toLowerCase().toCharArray();
@@ -36,20 +37,36 @@ public class Main {
         for(int i=0;i<letras.length;i++) {
         	
         	//le pones el valor de la letra
-        	listaPalabras.add(letras[i]);
+        	listaPalabras.put(letras[i],i);
         	
         }
+        
+        
+        for(char letra:texto.toCharArray()) {
+        	
+        	if(Character.isLetter(letra)) {
+        		letra=Character.toLowerCase(letra);
+        		
+        		listaPalabras.put(letra, listaPalabras.getOrDefault(letra, 0)+1);
+        		
+        	}
+        	
+        }
+        
+        
+        
+        
         
 		
         System.out.println("Escribe la letra: ");
         
         
         
-        letra=sc.next().charAt(0);
+        escritura=sc.next().charAt(0);
         
         for(char palabra:listaPalabras) {
         	
-        	if(palabra==letra) {
+        	if(palabra==escritura) {
         		veces+=1;
         	}
         	
